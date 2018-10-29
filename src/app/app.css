@@ -1,0 +1,62 @@
+.navbar-toggler {
+    border: 0px;
+    padding-top: 0px;    
+}
+
+.navbar-toggler i {
+    display: block;
+    height: 6px;
+}
+
+.data-envio {
+    color: gray;
+}
+
+.autor-envio {
+    color: orange;
+}
+
+.info-envio {
+    font-size: 14px;
+}
+
+.row-list {
+    padding: 10px 0px 10px 0px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.row-list:hover {
+    background-color: #eee;
+}
+
+.row-list h3 {
+    cursor: pointer;
+}
+
+#list {
+    padding-top: 20px;
+}
+
+body {
+    background-color: #DAE0E6;
+}
+
+.col-button-search {
+    margin-top: 10px;
+    padding: 0px;
+}
+
+.container {
+    margin-top: 40px;
+    padding-bottom: 20px;
+}
+
+.image-not-found {
+    font-size: 100px;
+}
+
+.navbar-brand, .nav-link {
+    outline: none;
+}
