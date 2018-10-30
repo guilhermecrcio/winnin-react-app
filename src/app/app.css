@@ -60,3 +60,13 @@ body {
 .navbar-brand, .nav-link {
     outline: none;
 }
+
+.filter-text {
+    color: #fff;
+    margin-top: 70px;
+    padding: 20px;
+}
+
+.btn-clear-search {
+    margin-left: 5px;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getHotPosts } from '../dispatch/posts'
+import { navActiveItem } from '../dispatch/nav'
 import $ from 'jquery'
 
 import List from '../template/list'
@@ -16,6 +17,8 @@ class Hot extends Component {
     }
     
     componentWillMount() {
+        this.props.navActiveItem(window.location.hash)
+        
         if (this.props.page == null) {
             this.props.getHotPosts(this.props.page)
         } else if (this.props.error !== null) {
@@ -58,7 +61,7 @@ class Hot extends Component {
                 </List>
                 <If test={this.props.list.length < this.props.total}>
                     <Col cols='10' className='offset-md-1 offset-lg-1 col-button-search' >
-                        <ButtonBlock className='info btn-load' text='Ver Mais' icon={<Icon icon='plus' />} onClick={() => this.getHotPosts()} />
+                        <ButtonBlock className='btn-primary btn-load' text='Ver Mais' icon={<Icon icon='plus' />} onClick={() => this.getHotPosts()} />
                     </Col>
                 </If>
             </div>
@@ -74,7 +77,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    getHotPosts
+    getHotPosts,
+    navActiveItem
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Hot)

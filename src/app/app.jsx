@@ -13,8 +13,6 @@ import Routes from './routes'
 export default (props) => (
     <div>
         <Header />
-        <div className='container'>
-            <Routes />
-        </div>
+        <Routes />
     </div>
 )

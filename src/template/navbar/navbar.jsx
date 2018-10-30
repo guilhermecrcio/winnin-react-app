@@ -1,6 +1,7 @@
 import React from 'react'
 import Icon from '../icon'
 import If from '../../helpers/if'
+import { Button } from '../button'
 
 export default (props) => (
     <nav className='navbar navbar-expand-xl navbar-light bg-light fixed-top'>
@@ -24,8 +25,9 @@ export default (props) => (
             </ul>
             <If test={props.search} >
                 <form className="form-inline my-2 my-lg-0">
-                    <input className="form-control mr-sm-2" type="text" placeholder="Search" onChange={props.searchOnChange} />
-                    <button className="btn btn-primary my-2 my-sm-0" onClick={props.searchOnClick} ><Icon icon='search' /> Search</button>
+                    <input className="form-control mr-sm-2" placeholder="Search" onChange={props.searchOnChange} onKeyUp={props.searchOnKeyUp} value={props.searchText} />
+                    <Button className='btn-primary btn-search' onClick={props.searchOnClick} icon={<Icon icon='search' />} text='Search' />
+                    <Button className='btn-warning btn-clear-search' onClick={props.clearOnClick} icon={<Icon icon='remove' />} text='Clear' />
                 </form>
             </If>
         </div>

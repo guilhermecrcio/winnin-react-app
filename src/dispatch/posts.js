@@ -1,23 +1,47 @@
 import axios from 'axios'
 import URL from '../helpers/url'
 
-export const searchPosts = (searchText, page) => {
+export const clearSearch = () => ({
+    type: 'CLEAR_SEARCH'
+})
+
+export const newSearchPosts = (searchText) => {
     if (searchText.length == 0) {
         return {
             type: 'CLEAR_SEARCH'
         }
     } else {
-        const skip = 5 * page
-        const request = axios.get(`${URL}?&title__regex=/${searchText}/ig&limit=5&skip=${skip}&count=true`)
-
+        const request = axios.get(`${URL}?&title__regex=/${searchText}/ig&limit=5&skip=0&count=true`)
+        
         return [{
+            type: 'CLEAR_SEARCH'
+        },{
+            type: 'SET_SEARCH_TEXT',
+            payload: searchText
+        },{
             type: 'SEARCH_POSTS',
             payload: request
         }, {
             type: 'SET_SEARCH_POSTS_PAGE',
-            payload: page + 1
+            payload: 1
+        }, {
+            type: 'SET_SEARCH_FILTER_TEXT',
+            payload: searchText
         }]
     }
+}
+
+export const searchPosts = (searchText, page) => {
+    const skip = 5 * page
+    const request = axios.get(`${URL}?&title__regex=/${searchText}/ig&limit=5&skip=${skip}&count=true`)
+    
+    return [{
+        type: 'SEARCH_POSTS',
+        payload: request
+    }, {
+        type: 'SET_SEARCH_POSTS_PAGE',
+        payload: page + 1
+    }]
 }
 
 export const getHotPosts = (currentPage = null, page = 0, force = false) => {
